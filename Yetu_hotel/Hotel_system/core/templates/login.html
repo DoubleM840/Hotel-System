@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="login-section">
+            <div class="container">
+                <h1>Login</h1>
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+</body>
+</html>

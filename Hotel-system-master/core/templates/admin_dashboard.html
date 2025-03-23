@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+
+        <section>
+            <h3>Users</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <a href="{% url 'delete_user' user.id %}">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3">No users found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Your Bookings</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Room</th>
+                        <th>Check-In Date</th>
+                        <th>Check-Out Date</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.user.username }}</td>
+                        <td>{{ booking.room.get_room_type_display }}</td>
+                        <td>{{ booking.check_in_date }}</td>
+                        <td>{{ booking.check_out_date }}</td>
+                        <td>KSh {{ booking.total_price }}</td>
+                        <td>{{ booking.status }}</td>
+                        <td>
+                            <a href="{% url 'cancel_booking' booking.id %}">Cancel</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7">No bookings yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Messages</h3>
+            <div class="chat-box">
+                {% for message in messages %}
+                    <div class="chat-message">
+                        {% if message.is_admin %}
+                            <strong>Admin</strong>: {{ message.message }}
+                        {% else %}
+                            <strong>{{ message.user.username }}</strong>: {{ message.message }}
+                        {% endif %}
+                        <br><small>{{ message.created_at }}</small>
+                    </div>
+                {% empty %}
+                    <p>No messages yet.</p>
+                {% endfor %}
+            </div>
+            
+            <form method="POST">
+                {% csrf_token %}
+                <textarea name="message" rows="3" required placeholder="Type your reply..."></textarea>
+                <br>
+                <select name="user_id" required>
+                    <option value="">Select User</option>
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>Billing History</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking</th>
+                        <th>Amount</th>
+                        <th>Payment Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for billing in billings %}
+                    <tr>
+                        <td>{{ billing.booking.room.get_room_type_display }} ({{ billing.booking.check_in_date }} - {{ billing.booking.check_out_date }})</td>
+                        <td>KSh {{ billing.amount }}</td>
+                        <td>{{ billing.payment_date }}</td>
+                        <td>{{ billing.status }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No billing records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Available Rooms</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Room Type</th>
+                        <th>Price per Night</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for room in rooms %}
+                    <tr>
+                        <td>{{ room.get_room_type_display }}</td>
+                        <td>KSh {{ room.price_per_night }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2">No rooms available.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+</body>
+</html>

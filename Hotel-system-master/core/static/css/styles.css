@@ -1,0 +1,47 @@
+/* Navbar Styles */
+.navbar {
+    background: linear-gradient(135deg, #00ff26, #6610f2); /* Gradient background */
+    border-bottom: 2px solid #fff; /* White border at the bottom */
+}
+
+.nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.nav-link:hover {
+    color: #fff; /* Change text color on hover */
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle background change on hover */
+}
+
+.dropdown-menu {
+    background-color: #343a40; /* Dark background for dropdown */
+    border: none; /* Remove border */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Highlight on hover */
+}
+
+.btn-primary {
+    border-radius: 20px; /* Rounded button */
+    transition: background-color 0.3s ease; /* Smooth transition for button hover */
+}
+
+.btn-primary:hover {
+    background-color: #bee46b; /* Darken primary button on hover */
+}
+
+.btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5); /* Light outline color */
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Background change on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+    }
+}

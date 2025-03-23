@@ -1,0 +1,115 @@
+/* about.css */
+
+/* Custom Variables for Dark and Light Mode */
+:root {
+    --primary-color: #0A9396;
+    --secondary-color: #E9D8A6;
+    --background-color: #001219;
+    --text-color: #ffffff;
+    --glass-color: rgba(255, 255, 255, 0.1);
+    --border-glow: rgba(255, 255, 255, 0.4);
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #E9ECEF;
+        --text-color: #000000;
+        --glass-color: rgba(0, 0, 0, 0.1);
+        --border-glow: rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Section Layout */
+.about-section, .management-section {
+    padding: 50px;
+    text-align: center;
+}
+
+.about-section h2, .management-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Glassmorphism for content containers */
+.about-content, .management-team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: var(--glass-color);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-glow);
+}
+
+/* Hotel Image */
+.hotel-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hotel-image:hover {
+    transform: scale(1.05);
+}
+
+/* Manager Cards */
+.manager {
+    background: var(--glass-color);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.manager:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Manager Images */
+.manager-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.manager-image:hover {
+    box-shadow: 0 0 15px var(--border-glow);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .about-content, .management-team {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Text styles */
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-top: 10px;
+}

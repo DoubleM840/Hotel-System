@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Rooms</title>
+    <link rel="stylesheet" href="{% static 'css/rooms.css' %}">
+    
+</head>
+<body>
+    <header>
+        <h1>Available Rooms</h1>
+    </header>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'rooms' %}">Rooms</a>
+    </nav>
+    <ul>
+        {% for room in rooms %}
+            <li>
+                <h2>{{ room.get_room_type_display }}</h2>
+                <p>{{ room.description }}</p>
+                <p>Price: KSh {{ room.price_per_night }}/night</p>
+                <p>Capacity: {{ room.capacity }} guests</p>
+                <img src="{{ room.image.url }}" alt="{{ room.get_room_type_display }}">
+
+                {% if room.is_booked %}
+                    <p color="Red"><strong>This room is already booked. Please choose another room.</strong></p>
+                {% else %}
+                    <a href="{% url 'room_details' room.id %}">View Details</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <link rel="stylesheet" href="{% static 'css/payment_success.css' %}">
+    <style>
+        /* Basic page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #28a745;  /* Green for success */
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #4a148c; /* Deep purple for headings */
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .link-container {
+            margin-top: 30px;
+        }
+
+        a {
+            color: #fff;
+            background-color: #4CAF50; /* Green */
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #388e3c; /* Darker green on hover */
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 28px;
+            }
+            h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Successful!</h2>
+        <p>Thank you for your payment. Your transaction has been successfully processed.</p>
+
+        <h3>Payment Details</h3>
+        <p><strong>Booking ID:</strong> {{ payment.booking.id }}</p>
+        <p><strong>Amount Paid:</strong> KSh {{ payment.amount }}</p>
+        <p><strong>Payment Method:</strong> {{ payment.payment_method }}</p>
+        <p><strong>Payment Reference:</strong> {{ payment.payment_reference }}</p>
+        <p><strong>Payment Date:</strong> {{ payment.payment_date }}</p>
+
+        <div class="link-container">
+            <a href="{% url 'dashboard' %}">Go to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+{% extends 'base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Room - {{ room.get_room_type_display }}</title>
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">  <!-- Link to your CSS file -->
+    {% block content %}
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f0f4f8, #e9ecef);
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            text-align: center;
+            color: #007bff; /* Primary blue color */
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input[type="date"],
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        input[type="date"]:focus,
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        h3, h4 {
+            color: #495057;
+            margin-top: 20px;
+        }
+        p {
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745; /* Success green */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838; /* Darker green */
+        }
+        #total_price {
+            font-size: 20px;
+            color: #dc3545; /* Danger red for emphasis */
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+                margin: 20px;
+            }
+            h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Book {{ room.get_room_type_display }}</h2>
+        
+        <form method="post" class="booking-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="check_in_date">Check-in Date:</label>
+                <input type="date" id="check_in_date" name="check_in_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="check_out_date">Check-out Date:</label>
+                <input type="date" id="check_out_date" name="check_out_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="number_of_guests">Number of Guests:</label>
+                <input type="number" id="number_of_guests" name="number_of_guests" min="1" required>
+            </div>
+
+            <h3>Room Details</h3>
+            <p><strong>Room Type:</strong> {{ room.get_room_type_display }}</p>
+            <p><strong>Description:</strong> {{ room.description }}</p>
+            <p><strong>Price per Night:</strong> KSh {{ room.price_per_night }}</p>
+
+            <h4>Total Price Calculation</h4>
+            <p>
+                <strong>Total Price:</strong>
+                <span id="total_price">KSh 0.00</span>
+            </p>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <script>
+        // Ensure the script runs after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Grab the check-in and check-out input elements
+            const checkInInput = document.getElementById('check_in_date');
+            const checkOutInput = document.getElementById('check_out_date');
+
+            // Make sure both elements exist on the page
+            if (checkInInput && checkOutInput) {
+                // Attach event listeners to calculate the total price when dates are changed
+                checkInInput.addEventListener('change', calculateTotalPrice);
+                checkOutInput.addEventListener('change', calculateTotalPrice);
+            }
+
+            function calculateTotalPrice() {
+                // Parse the selected check-in and check-out dates
+                const checkInDate = new Date(checkInInput.value);
+                const checkOutDate = new Date(checkOutInput.value);
+                
+                // Ensure the price_per_night is safely passed from the Django template to JavaScript
+                const pricePerNight = parseFloat("{{ room.price_per_night|default:0 }}"); // Default to 0 if price is not provided
+
+                // Check if the input dates are valid and the check-out date is later than the check-in date
+                if (checkInInput.value && checkOutInput.value && checkOutDate > checkInDate) {
+                    // Calculate the number of nights between the two dates
+                    const nights = (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+
+                    // Calculate the total price based on nights and price per night
+                    const totalPrice = nights * pricePerNight;
+
+                    // Display the total price in the appropriate element
+                    document.getElementById('total_price').textContent = 'KSh ' + totalPrice.toFixed(2);
+                } else {
+                    // If dates are invalid, reset the total price to 0
+                    document.getElementById('total_price').textContent = 'KSh 0.00';
+                }
+            }
+        });
+    </script>
+    {% endblock%}
+</body>
+</html>

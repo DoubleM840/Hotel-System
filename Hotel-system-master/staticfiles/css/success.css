@@ -1,0 +1,94 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #2980b9;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    margin-top: 20px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.booking-details {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.payment-info {
+    list-style: none;
+    padding: 0;
+}
+
+.payment-info li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.payment-info li:last-child {
+    border-bottom: none;
+}
+
+strong {
+    color: #34495e;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h2, h3, h4 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+/* Success.css */
+
+.payment-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #27ae60; /* Green color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.payment-button:hover {
+    background-color: #219653; /* Darker green on hover */
+}

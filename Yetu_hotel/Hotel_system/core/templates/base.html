@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Yetu-Hotel{% endblock %}</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Additional Custom Styles -->
+    
+</head>
+<style>
+    /* Make the navbar sticky */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+</style>
+
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logo1.webp' %}" alt="Logo" height="40">Yetu-Hotel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Rooms</a>
+
+                        
+                    </li>
+                    <li class="nav-item"><a class="nav-link btn btn-primary text-white px-4" href="{% url 'signup' %}">Book Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-success ms-2 text-white" href="{% url 'signup' %}">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% block content%}
+
+    {% endblock %}
+
+    
+
+    <!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-4 mt-auto">
+    <div class="text-center text-md-start">
+        <div class="row mx-0 px-5">
+            <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+                <h6 class="text-uppercase fw-bold">About Yetu Hotel</h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+                <p>Yetu Hotel offers luxury, comfort, and a touch of elegance. Located in the heart of the city, we ensure every guest experiences an unforgettable stay.</p>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mb-4">
+                <h6 class="text-uppercase fw-bold">Quick Links</h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+                <p><a href="#" class="text-white text-decoration-none">Home</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Rooms</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Events</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Contact Us</a></p>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mb-md-0 mb-4">
+                <h6 class="text-uppercase fw-bold">Contact Us</h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+                <p><i class="fas fa-home me-3"></i> 123 Yetu Street, Nairobi, Kenya</p>
+                <p><i class="fas fa-envelope me-3"></i> info@yetu-hotel.com</p>
+                <p><i class="fas fa-phone me-3"></i> +254 700 000 000</p>
+                <p><i class="fas fa-print me-3"></i> +254 701 000 001</p>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mb-4">
+                <h6 class="text-uppercase fw-bold">Follow Us</h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+                <div class="d-flex justify-content-center justify-content-md-start">
+                    <a href="#" class="text-white me-4"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-4"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-4"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white me-4"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-3" style="background-color: hsla(347, 89%, 45%, 0.2);">
+        &copy; 2024 Yetu Hotel | All Rights Reserved
+    </div>
+</footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <style>
+        /* Navbar Styles */
+.navbar {
+    background: linear-gradient(135deg, #00ff26, #6610f2); /* Gradient background */
+    border-bottom: 2px solid #fff; /* White border at the bottom */
+}
+
+.nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.nav-link:hover {
+    color: #fff; /* Change text color on hover */
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle background change on hover */
+}
+
+.dropdown-menu {
+    background-color: #343a40; /* Dark background for dropdown */
+    border: none; /* Remove border */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Highlight on hover */
+}
+
+.btn-primary {
+    border-radius: 20px; /* Rounded button */
+    transition: background-color 0.3s ease; /* Smooth transition for button hover */
+}
+
+.btn-primary:hover {
+    background-color: #bee46b; /* Darken primary button on hover */
+}
+
+.btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5); /* Light outline color */
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Background change on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+    }
+}
+footer {
+    width: 100%;
+}
+
+    </style>
+</body>
+
+</html>

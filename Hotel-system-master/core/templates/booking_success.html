@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Success</title>
+    <link rel="stylesheet" href="{% static 'css/Success.css' %}">  <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #e0f7fa, #fffde7);
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: #00796b; /* Teal color */
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #004d40; /* Darker teal */
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        h4 {
+            color: #555; /* Grey color */
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .booking-details {
+            border-top: 2px solid #00796b; /* Teal border */
+            padding-top: 15px;
+            margin-top: 15px;
+            text-align: left;
+        }
+        .payment-info {
+            list-style-type: none;
+            padding: 0;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .payment-info li {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .payment-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #28a745; /* Success green */
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .payment-button:hover {
+            background-color: #218838; /* Darker green */
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            h2 {
+                font-size: 28px;
+            }
+            h3 {
+                font-size: 24px;
+            }
+            h4 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Booking Successful!</h2>
+        
+        <p>Your booking has been confirmed.</p>
+        <h3>Booking Details</h3>
+        
+        <div class="booking-details">
+            <p><strong>Room Type:</strong> {{ booking.room.get_room_type_display }}</p>
+            <p><strong>Description:</strong> {{ booking.room.description }}</p>
+            <p><strong>Check-in Date:</strong> {{ booking.check_in_date }}</p>
+            <p><strong>Check-out Date:</strong> {{ booking.check_out_date }}</p>
+            <p><strong>Number of Guests:</strong> {{ booking.number_of_guests }}</p>
+            <p><strong>Total Price:</strong> KSh {{ booking.total_price }}</p>
+        </div>
+
+        <h4>Payment Information</h4>
+        <p>Please make your payment to confirm your booking:</p>
+        <ul class="payment-info">
+            <li><strong>Amount Due:</strong> KSh {{ booking.total_price }}</li>
+            <li><strong>Payment Method:</strong> all</li>
+            <li><strong>Account Name:</strong> Yetu Hotel</li>
+            <li><strong>Account Number:</strong> 1234567890</li>
+            <li><strong>Payment Reference:</strong> Booking ID {{ booking.id }}</li>
+        </ul>
+
+        <p>Thank you for choosing us! We look forward to welcoming you.</p>
+
+        <a href="{% url 'process_payment' booking.id %}" class="payment-button">Proceed to Payment</a> <!-- Update the URL to your payment page -->
+    </div>
+
+</body>
+</html>

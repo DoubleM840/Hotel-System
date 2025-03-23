@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 30px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .details strong {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+        .receipt-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        .receipt-table th, .receipt-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+        .receipt-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .receipt-table td {
+            background-color: #fafafa;
+        }
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            border-top: 2px solid #ddd;
+            padding-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Receipt for Booking {{ booking.id }}</h1>
+        
+        <div class="details">
+            <p><strong>Room Type:</strong> {{ booking.room.room_type }}</p>
+            <p><strong>Check-in Date:</strong> {{ booking.check_in_date }}</p>
+            <p><strong>Check-out Date:</strong> {{ booking.check_out_date }}</p>
+            <p><strong>Total Price:</strong> KSh {{ booking.total_price }}</p>
+            <p><strong>Guests:</strong> {{ booking.number_of_guests }}</p>
+        </div>
+
+        
+        <p class="footer">Thank you for booking with us!</p>
+    </div>
+</body>
+</html>

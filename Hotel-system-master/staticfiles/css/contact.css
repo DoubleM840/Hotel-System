@@ -1,0 +1,153 @@
+/* contact.css */
+
+/* Root Variables for Dark and Light Mode */
+:root {
+    --primary-color: #0A9396;
+    --secondary-color: #E9D8A6;
+    --background-color: #001219;
+    --text-color: #ffffff;
+    --form-bg: rgba(255, 255, 255, 0.15);
+    --input-bg: rgba(255, 255, 255, 0.2);
+    --input-border: rgba(255, 255, 255, 0.3);
+    --button-bg: #0A9396;
+    --button-hover: #E9D8A6;
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #E9ECEF;
+        --text-color: #000000;
+        --form-bg: rgba(0, 0, 0, 0.05);
+        --input-bg: rgba(0, 0, 0, 0.1);
+        --input-border: rgba(0, 0, 0, 0.2);
+        --button-bg: #001219;
+        --button-hover: #0A9396;
+    }
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Contact Section Styling */
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Contact Form Styling with Glassmorphism */
+.contact-form {
+    background: var(--form-bg);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(148, 231, 13, 0.15);
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Input and Textarea Styles with label on right using Grid */
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+}
+
+label {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    text-align: right;  /* Align text to the right */
+}
+
+input, textarea {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    padding: 15px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Submit Button Styling */
+button {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+    box-shadow: 0 8px 25px rgba(127, 193, 3, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 40px 15px;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    /* Make the form labels stack vertically on small screens */
+    .form-group {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    label {
+        text-align: left;
+    }
+}

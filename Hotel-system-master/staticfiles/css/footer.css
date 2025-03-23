@@ -1,0 +1,119 @@
+/* Root Variables for Dark and Light Mode */
+:root {
+    --primary-color: #0A9396;
+    --secondary-color: #E9D8A6;
+    --background-color: #001219;
+    --text-color: #ffffff;
+    --footer-bg: rgba(0, 0, 0, 0.8);
+    --icon-color: #ffffff;
+    --hover-icon-color: #0A9396;
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #E9ECEF;
+        --text-color: #000000;
+        --footer-bg: rgba(255, 255, 255, 0.9);
+        --icon-color: #001219;
+        --hover-icon-color: #E9D8A6;
+    }
+}
+
+/* Footer Section Styling */
+.footer-section {
+    background: var(--footer-bg);
+    padding: 50px 0;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-about, .footer-links, .footer-contact, .footer-social {
+    flex: 1 1 250px;
+    margin: 10px;
+}
+
+.footer-about h3, .footer-links h3, .footer-contact h3, .footer-social h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Social Media Icons Styling */
+.footer-social a {
+    font-size: 1.5rem;
+    color: var(--icon-color);
+    margin: 0 10px;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Social Icon Hover Effects */
+.footer-social a:hover {
+    color: var(--hover-icon-color);
+    transform: scale(1.2) rotate(360deg);
+}
+
+/* Social Icon Circular Background */
+.social-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    padding: 10px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.2);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .footer-about, .footer-links, .footer-contact, .footer-social {
+        margin: 20px 0;
+    }
+}

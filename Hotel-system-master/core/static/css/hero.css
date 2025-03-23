@@ -1,0 +1,68 @@
+/* hero.css */
+
+/* Additional CSS for text overlay and button */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease;
+}
+
+.hero-image.active {
+    opacity: 1;
+}
+
+.color-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+
+.color-overlay.active {
+    opacity: 1;
+}
+
+.text-overlay {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    bottom: 80px; /* Adjust as needed */
+    left: 20px;   /* Adjust as needed */
+}
+
+.text-overlay:nth-of-type(2) {
+    bottom: 50px; /* Adjust for second overlay */
+}
+
+.text-overlay:nth-of-type(3) {
+    bottom: 20px; /* Adjust for third overlay */
+}
+
+.book-now-button {
+    position: absolute;
+    bottom: 30px; /* Position above the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    background-color: #f39c12; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-now-button:hover {
+    background-color: #22e67a; /* Hover color */
+}

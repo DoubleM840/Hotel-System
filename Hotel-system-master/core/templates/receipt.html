@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details strong {
+            display: inline-block;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Receipt for Booking</h1>
+        <div class="details">
+            <strong>Booking ID:</strong> {{ booking.id }}<br>
+            <strong>Room Type:</strong> {{ booking.room.get_room_type_display }}<br>
+            <strong>Check-in Date:</strong> {{ booking.check_in_date }}<br>
+            <strong>Check-out Date:</strong> {{ booking.check_out_date }}<br>
+            <strong>Number of Guests:</strong> {{ booking.number_of_guests }}<br>
+            <strong>Total Price:</strong> KSh {{ booking.total_price }}<br>
+        </div>
+        <p>Thank you for booking with us!</p>
+    </div>
+</body>
+</html>

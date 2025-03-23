@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yetu Hotel Events</title>
+    <link rel="stylesheet" href="{% static 'css/events.css' %}">
+</head>
+<body>
+
+    <!-- Events Section -->
+    <section id="events" class="events-section">
+        <h2>Upcoming Events at Yetu Hotel</h2>
+        <div class="events-container">
+            <div class="event">
+                <img src="{% static 'images/music1.jpg' %}" alt="Event 1" class="event-image">
+                <h3>Live Music Night</h3>
+                <p>Date: October 20, 2024</p>
+                <p>Join us for a night of live music featuring local artists. Enjoy great food and drinks while soaking up the vibrant atmosphere!</p>
+            </div>
+            <div class="event">
+                <img src="{% static 'images/wine.webp' %}" alt="Event 2" class="event-image">
+                <h3>Wine Tasting Evening</h3>
+                <p>Date: November 15, 2024</p>
+                <p>Indulge in an exquisite wine tasting experience with selections from around the world. A perfect evening for wine lovers!</p>
+            </div>
+            <div class="event">
+                <img src="{% static 'images/dinner.jpeg' %}" alt="Event 3" class="event-image">
+                <h3>Holiday Dinner Celebration</h3>
+                <p>Date: December 25, 2024</p>
+                <p>Celebrate the festive season with our special holiday dinner featuring a gourmet menu and festive entertainment!</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

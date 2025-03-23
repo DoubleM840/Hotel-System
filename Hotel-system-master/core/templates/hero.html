@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Hero</title>
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <img src="{% static 'images/hotel1.avif' %}" alt="Hotel" class="hero-image active">
+        <div class="color-overlay active" style="background: rgba(0, 255, 85, 0.5);"></div> <!-- Red Overlay -->
+        <div class="color-overlay" style="background: rgba(0, 255, 0, 0.5);"></div> <!-- Green Overlay -->
+        <div class="color-overlay" style="background: rgba(0, 0, 255, 0.5);"></div> <!-- Blue Overlay -->
+        
+        <div class="text-overlay" id="text1"></div>
+        <div class="text-overlay" id="text2"></div>
+        <div class="text-overlay" id="text3"></div>
+        
+    </section>
+
+    <script>
+        const slides = document.querySelectorAll('.hero-image');
+        const overlays = document.querySelectorAll('.color-overlay');
+        const textOverlays = [
+            document.getElementById('text1'),
+            document.getElementById('text2'),
+            document.getElementById('text3')
+        ];
+        const sentences = [
+            "Welcome to our luxurious hotel!",
+            "Experience a great adventure and treat.",
+            "Your perfect getaway awaits you!"
+        ];
+        let slideIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+                overlays[i].classList.toggle('active', i === index);
+                if (i === index) {
+                    typeSentence(sentences[index], textOverlays[index]);
+                } else {
+                    textOverlays[i].textContent = ''; // Clear previous text
+                }
+            });
+        }
+
+        function typeSentence(sentence, textElement) {
+            let wordIndex = 0;
+            textElement.textContent = ''; // Clear previous text
+            const words = sentence.split(' ');
+
+            const typeNextWord = () => {
+                if (wordIndex < words.length) {
+                    textElement.textContent += words[wordIndex] + ' ';
+                    wordIndex++;
+                    setTimeout(typeNextWord, 600); // Adjust the speed of word appearance here
+                }
+            };
+            typeNextWord();
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        showSlide(slideIndex);
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    </script>
+</body>
+</html>

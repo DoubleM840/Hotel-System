@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Yetu Hotel</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+
+    <section id="about" class="about-section">
+
+        <h2>About Yetu Hotel</h2>
+        <div class="about-content">
+            <img src="{% static 'images/hotel1.avif' %}" alt="Yetu Hotel" class="hotel-image">
+            <p>
+                Welcome to Yetu Hotel, where luxury meets comfort! Nestled in the heart of the city, our hotel offers a unique blend of modern amenities and traditional hospitality. Our dedicated staff is committed to providing guests with an unforgettable experience. Enjoy our spacious rooms, each designed to cater to your needs with top-notch facilities. At Yetu Hotel, we take pride in offering exquisite dining options, recreational activities, and personalized services that ensure every guest feels at home. Whether you're traveling for business or leisure, our hotel is the perfect choice for all your accommodation needs. With a prime location, you have easy access to local attractions, shopping, and entertainment. Experience the charm and elegance of Yetu Hotel, where every detail is tailored to create a memorable stay. We look forward to welcoming you and making your stay truly special!
+            </p>
+        </div>
+    </section>
+
+    <section class="management-section">
+        <h2>Hotel Management</h2>
+        <div class="management-team">
+            <div class="manager">
+                <img src="{% static 'images/manager.jpg' %}" alt="Manager 1" class="manager-image">
+                <h3>John Doe</h3>
+                <p>General Manager</p>
+            </div>
+            <div class="manager">
+                <img src="{% static 'images/secretary.png' %}" alt="Manager 2" class="manager-image">
+                <h3>Jane Smith</h3>
+                <p>Operations Manager</p>
+            </div>
+            <div class="manager">
+                <img src="{% static 'images/ceo.jpg' %}" alt="Manager 3" class="manager-image">
+                <h3>Michael Johnson</h3>
+                <p>Marketing Manager</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
